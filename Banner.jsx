@@ -9,7 +9,8 @@ const Banner = () => {
       height={400}
     >
       <h1>Duck</h1>
-      <p>A classic metaverse must-have.</p>
+      <p>I am a duck. I mint NFTs of myself.</p>
+      <p>Would you like one?</p>
     </div>
   );
 };

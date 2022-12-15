@@ -2,8 +2,8 @@
 import interfaceFactory from '@psychedelic/dab-js/dist/idls/dip_721_v2.did.js';
 
 export const plugLogin = async () => {
-    // const canisterId = "q47yz-iyaaa-aaaam-qambq-cai";
-    const canisterId = "6hgw2-nyaaa-aaaai-abkqq-cai";
+    const canisterId = "q47yz-iyaaa-aaaam-qambq-cai";
+    // const canisterId = "6hgw2-nyaaa-aaaai-abkqq-cai";
     const whitelist = [canisterId];
     const standard = "DIP721v2";
     console.log('logging in...');
@@ -29,13 +29,13 @@ export const plugLogin = async () => {
       [
         "location",
         {
-          "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/0/preview.jpg"
+          "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/playground/preview.jpg"
         }
       ],
       [
         "glb",
         {
-          "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/0/duck.glb"
+          "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/playground/Duck.glb"
         }
       ],
       [
@@ -46,5 +46,11 @@ export const plugLogin = async () => {
       ]
     ];
     const mintResult = await actor.mint(principal, tokenIndex, properties);
-    console.log(result);
+    const formattedResults = Object.keys(mintResult);
+    console.log(formattedResults);
+    if (formattedResults.includes("Ok")) {
+      alert("NFT Minted Successfully");
+    } else {
+      alert("NFT Minting Failed: \nSee your console log (F12) for details.");
+    }
   }

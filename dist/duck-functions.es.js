@@ -159,7 +159,7 @@ const init = ({ IDL }) => {
 };
 dip_721_v2_did.init = init;
 const plugLogin = async () => {
-  const canisterId = "6hgw2-nyaaa-aaaai-abkqq-cai";
+  const canisterId = "q47yz-iyaaa-aaaam-qambq-cai";
   const whitelist = [canisterId];
   console.log("logging in...");
   await window.ic.plug.requestConnect({ whitelist });
@@ -184,13 +184,13 @@ const plugLogin = async () => {
     [
       "location",
       {
-        "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/0/preview.jpg"
+        "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/playground/preview.jpg"
       }
     ],
     [
       "glb",
       {
-        "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/0/duck.glb"
+        "TextContent": "https://qgh4x-kyaaa-aaaaj-afk5q-cai.raw.ic0.app/playground/Duck.glb"
       }
     ],
     [
@@ -200,7 +200,13 @@ const plugLogin = async () => {
       }
     ]
   ];
-  await actor.mint(principal, tokenIndex, properties);
-  console.log(result);
+  const mintResult = await actor.mint(principal, tokenIndex, properties);
+  const formattedResults = Object.keys(mintResult);
+  console.log(formattedResults);
+  if (formattedResults.includes("Ok")) {
+    alert("NFT Minted Successfully");
+  } else {
+    alert("NFT Minting Failed: \nSee your console log (F12) for details.");
+  }
 };
 export { plugLogin };
